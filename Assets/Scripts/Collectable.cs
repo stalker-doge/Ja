@@ -8,7 +8,7 @@ public class Collectable : MonoBehaviour
 
     public void Collect()
     {
-        ScoreManager.Instance.AddScore(scoreValue);
+     //   ScoreManager.Instance.AddScore(scoreValue);
 
         Destroy(gameObject);
     }
