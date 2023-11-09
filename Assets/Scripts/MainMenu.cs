@@ -10,13 +10,9 @@ public class MenuButton : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void OptionMenu()
-    {
-        SceneManager.LoadScene("Options");
-    }
-
     public void quit()
     {
+        Debug.Log("QUIT!");
         Application.Quit();
     }
 }
