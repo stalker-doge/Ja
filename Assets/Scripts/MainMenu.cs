@@ -12,7 +12,6 @@ public class MenuButton : MonoBehaviour
 
     public void quit()
     {
-        Debug.Log("QUIT!");
         Application.Quit();
     }
 }

@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Start Screen.unity
     guid: ffaf97a0c83ebde46b3a3f61c3f5ae7f
+  - enabled: 1
+    path: Assets/Scenes/Collectibles.unity
+    guid: 5aed8e6ad0cb4174caba45aa82b6056b
   m_configObjects: {}
