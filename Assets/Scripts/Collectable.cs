@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int scoreValue = 1;
+
+    public void Collect()
     {
-        
+        ScoreManager.Instance.AddScore(scoreValue);
+
+        Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
