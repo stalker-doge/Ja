@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] BoxCollider boxCollider;
     bool grounded;
 
+    //other
+    [SerializeField] Animator animator;
+
     private void Awake()
     {
         playerInputActions = this.GetComponent<PlayerInput>().actions;
@@ -63,7 +66,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         //read input values
-        forceDirection += movement.ReadValue<Vector2>().x *GameObject.Find("Main Camera").transform.right;
+        forceDirection += movement.ReadValue<Vector2>().x *GameObject.Find("Camera").transform.right;
         forceDirection *= movementForce;
 
         //apply the force
@@ -82,6 +85,43 @@ public class PlayerController : MonoBehaviour
             rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * rb.velocity.y;
 
         pressure -= Time.fixedDeltaTime*pressureDrain;
+
+        if(pressure < 0)
+        {
+            KillPlayer();
+        }
+        if(rb.velocity.x>0)
+        {
+            animator.SetBool("Walking", true);
+        }
+        else
+        {
+            animator.SetBool("Walking", false);
+        }
+        if (rb.velocity.y > 0)
+        {
+            animator.SetBool("Jumping", true);
+        }
+        else
+        {
+            animator.SetBool("Jumping", false);
+        }
+
+    }
+
+    private void KillPlayer()
+    {
+        GameObject[] players = FindObjectsOfType<GameObject>();
+        if (players.Length > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("HEy!");
+            LevelHandler.Instance.LoadLose();
+        }
+
     }
 
     private void RelievePressure(InputAction.CallbackContext context)
