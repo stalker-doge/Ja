@@ -1,28 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Animations;
 using UnityEngine;
 
-public class ScoreHandler : MonoBehaviour
+public class PlayerCollect : MonoBehaviour
 {
-    private float score = 0;
-    public float RequireCoins = 5;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
+        Collectible collectible = other.GetComponent<Collectible>();
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void AddScore()
-    {
-        score++;
+        if (collectible != null)
+        {
+            Destroy(collectible);
+        }
     }
 }

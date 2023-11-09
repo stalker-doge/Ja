@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 52784400}
   - component: {fileID: 52784399}
   m_Layer: 0
-  m_Name: Collectable
+  m_Name: Collectible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -999,7 +999,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1707421809}
   m_Layer: 0
-  m_Name: Collectables
+  m_Name: Collectibles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
