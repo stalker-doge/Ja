@@ -966,11 +966,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1659785882}
   m_Layer: 0
-<<<<<<< HEAD
-  m_Name: Collectibles
-=======
   m_Name: Med
->>>>>>> 5a04e100bacafe7090b68c74096a2069020452b5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
