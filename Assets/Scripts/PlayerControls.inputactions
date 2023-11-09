@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pressure",
+                    "type": "Button",
+                    "id": "d847b39d-aad2-4f51-9354-00e8faeaf5ae",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -92,7 +101,7 @@
                 {
                     "name": "",
                     "id": "3826644f-28ee-4c1c-98ad-3e73d8bcbdaf",
-                    "path": "<XInputController>/leftStick",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -114,7 +123,7 @@
                 {
                     "name": "",
                     "id": "f51818db-b8e9-4614-8b12-27a131a7d2c4",
-                    "path": "<XInputController>/buttonSouth",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -125,11 +134,33 @@
                 {
                     "name": "",
                     "id": "c5f16103-fe1b-4c86-931f-82a4efec6302",
-                    "path": "<XInputController>/start",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "39a3505e-fdbb-4260-90bb-94dfd0216476",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2d48ae06-8bc2-40bd-9ddb-f28854887909",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pressure",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
