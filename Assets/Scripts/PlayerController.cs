@@ -17,7 +17,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float movementForce = 1f;
     [SerializeField] float jumpForce = 10f;
     [SerializeField] float maxSpeed = 5f;
+    [SerializeField] float maxPumpSpeed = 1f;
     private Vector3 forceDirection = Vector3.zero;
+
+    //pressure
+    [SerializeField] public float pressure = 100f;
+    [SerializeField] float pressureDrain = 2f;
+
+    //Colliders
+    [SerializeField] BoxCollider boxCollider;
+    bool grounded;
 
     private void Awake()
     {
@@ -31,21 +40,23 @@ public class PlayerController : MonoBehaviour
         movement = playerInputMap.FindAction("Movement");
         movement.Enable();
         playerInputMap.FindAction("Jump").started += DoJump;
+        playerInputMap.FindAction("Pressure").started += RelievePressure;
         playerInputMap.Enable();
     }
 
     private void DoJump(InputAction.CallbackContext context)
     {
-        //if (IsGrounded())
-        //{
+        if (grounded)
+        {
             forceDirection += Vector3.up * jumpForce;
-        //}
+        }
     }
 
     private void OnDisable()
     {
        movement.Disable();
        playerInputMap.FindAction("Jump").started -= DoJump;
+        playerInputMap.FindAction("Pressure").started -= RelievePressure;
         playerInputMap.Disable();
     }
 
@@ -70,41 +81,39 @@ public class PlayerController : MonoBehaviour
         if (horizontalVelocity.sqrMagnitude > maxSpeed * maxSpeed)
             rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * rb.velocity.y;
 
-        MoveLookAt();
+        pressure -= Time.fixedDeltaTime*pressureDrain;
     }
 
-    private void MoveLookAt()
+    private void RelievePressure(InputAction.CallbackContext context)
     {
-        Vector3 direction = rb.velocity;
-        direction.y = 0;
 
-        if (movement.ReadValue<Vector2>().magnitude > 0.1f && direction.magnitude > 0.1f)
-            this.rb.rotation = Quaternion.LookRotation(direction, Vector3.up);
-        else
-            rb.angularVelocity = Vector3.zero;
+        Vector3 horizontalVelocity = rb.velocity;
+        horizontalVelocity.y = 0;
+
+        if(horizontalVelocity.sqrMagnitude < maxPumpSpeed)
+        {
+            if (pressure + 10 < 100)
+                pressure += 10;
+            else
+                pressure = 100;
+        }
     }
 
-    //Gets forward direction of camera relative to the horizontal
-    private Vector3 GetCameraForward(Camera camera)
+    private void OnCollisionEnter(Collision other)
     {
-        Vector3 forward = camera.transform.forward;
-        forward.y = 0;
-        return forward.normalized;
+        if(other.gameObject.CompareTag("Ground"))
+        {
+            grounded = true;
+
+        }
     }
 
-    //Gets right direction of camera relative to the horizontal
-    private Vector3 GetCameraRight(Camera camera)
+    private void OnCollisionExit(Collision other)
     {
-        Vector3 right = camera.transform.right;
-        right.y = 0;
-        return right.normalized;
-    }
-    private bool IsGrounded()
-    {
-        Ray ray = new Ray(this.transform.position + Vector3.up * 0.25f, Vector3.down);
-        if (Physics.Raycast(ray, out RaycastHit hit, 0.3f))
-            return true;
-        else
-            return false;
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            grounded = false;
+
+        }
     }
 }
