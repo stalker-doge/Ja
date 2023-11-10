@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
         playerInputActions = this.GetComponent<PlayerInput>().actions;
         playerInputMap = playerInputActions.FindActionMap("Player");
         rb = this.GetComponent<Rigidbody>();
+        LevelHandler.Instance.playersAlive++;
     }
 
     private void OnEnable()
@@ -84,6 +85,7 @@ public class PlayerController : MonoBehaviour
         if (horizontalVelocity.sqrMagnitude > maxSpeed * maxSpeed)
             rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * rb.velocity.y;
 
+        maxSpeed += Time.fixedDeltaTime;
         pressure -= Time.fixedDeltaTime*pressureDrain;
 
         if(pressure < 0)
@@ -109,18 +111,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void KillPlayer()
+    public void KillPlayer()
     {
-        GameObject[] players = FindObjectsOfType<GameObject>();
-        if (players.Length > 1)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Debug.Log("HEy!");
-            LevelHandler.Instance.LoadLose();
-        }
+        LevelHandler.Instance.playersAlive--;
+        LevelHandler.Instance.LoadLose();
+        Destroy(gameObject);
 
     }
 
