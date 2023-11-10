@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void KillPlayer()
+    public void KillPlayer()
     {
         LevelHandler.Instance.playersAlive--;
         LevelHandler.Instance.LoadLose();

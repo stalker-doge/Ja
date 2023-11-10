@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6509335915283729715}
   - component: {fileID: 8767790691985142194}
   - component: {fileID: 5194314284927410486}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 2363697806351253477}
   - component: {fileID: 907094353770000019}
   - component: {fileID: 4820379910987769657}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -306,7 +306,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 8643430758100200529}
   - component: {fileID: 144527673022721098}
   - component: {fileID: 5202002908511373990}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Progress Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 7579303739592383377}
   - component: {fileID: 2229722962463783195}
   - component: {fileID: 200506305117701525}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 1584052147878464870}
   - component: {fileID: 244378094827207257}
   - component: {fileID: 6144208509758450789}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 3788933614673262178}
   - component: {fileID: 2530636243177460970}
   - component: {fileID: 1797643357970145722}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
