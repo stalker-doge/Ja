@@ -8,6 +8,7 @@ public class LevelHandler : MonoBehaviour
 {
 
     private static LevelHandler _Instance;
+    public int playersAlive;
     public static LevelHandler Instance
     {
         get
@@ -76,6 +77,9 @@ public class LevelHandler : MonoBehaviour
     }
     public void LoadLose()
     {
-        SceneManager.LoadScene("Loss");
+        if (playersAlive==0) 
+        {
+            SceneManager.LoadScene("Loss");
+        }
     }
 }

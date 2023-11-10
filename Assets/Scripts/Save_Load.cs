@@ -73,4 +73,9 @@ public class Save_Load : MonoBehaviour
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.dataPath + "/savefile.json", json);
     }
+
+    public void WipeSave()
+    {
+        File.Delete(Application.dataPath + "/savefile.json");
+    }
 }
