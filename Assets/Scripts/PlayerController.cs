@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     //other
     [SerializeField] Animator animator;
+    public float score;
 
     private void Awake()
     {
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
         movement.Enable();
         playerInputMap.FindAction("Jump").started += DoJump;
         playerInputMap.FindAction("Pressure").started += RelievePressure;
+        playerInputMap.FindAction("Menu").started += QuitGame;
         playerInputMap.Enable();
     }
 
@@ -61,6 +63,7 @@ public class PlayerController : MonoBehaviour
        movement.Disable();
        playerInputMap.FindAction("Jump").started -= DoJump;
         playerInputMap.FindAction("Pressure").started -= RelievePressure;
+        playerInputMap.FindAction("Menu").started -= QuitGame;
         playerInputMap.Disable();
     }
 
@@ -108,13 +111,23 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Jumping", false);
         }
+        score += Time.fixedDeltaTime;
 
     }
 
     public void KillPlayer()
     {
-        LevelHandler.Instance.playersAlive--;
+        LevelHandler.Instance.playersAlive= LevelHandler.Instance.playersAlive-1;
         LevelHandler.Instance.LoadLose();
+        if(LevelHandler.Instance.finalScorePlayer1==0)
+        {
+            LevelHandler.Instance.finalScorePlayer1 = score;
+
+        }
+        else
+        {
+            LevelHandler.Instance.finalScorePlayer2 = score;
+        }
         Destroy(gameObject);
 
     }
@@ -133,6 +146,11 @@ public class PlayerController : MonoBehaviour
                 pressure = 100;
         }
     }
+    private void QuitGame(InputAction.CallbackContext context)
+    {
+        Application.Quit();
+    }
+
 
     private void OnCollisionEnter(Collision other)
     {

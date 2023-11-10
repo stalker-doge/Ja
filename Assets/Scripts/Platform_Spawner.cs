@@ -5,22 +5,15 @@ using UnityEngine;
 public class Platform_Spawner : MonoBehaviour
 {
 
-    public GameObject[] Spawner;
-    [SerializeField] BoxCollider spawnBox;
-    //public Vector3[] minPos;
-    //public Vector3[] maxPos;
-
-    [SerializeField] int numberOfSpawns;
     [SerializeField] GameObject[] Spawns;
 
     [SerializeField] private float spawnDelay = 2f;
     [SerializeField] private float spawnTimer;
-    [SerializeField] private float spawnTime;
+    [SerializeField] private int spawnOffset=50;
 
     // Start is called before the first frame update
     void Start()
     {
-        Spawns = new GameObject[numberOfSpawns*Spawner.Length];
 
 
        //for (int i = 0; i < 2; i++)
@@ -51,8 +44,8 @@ public class Platform_Spawner : MonoBehaviour
 
     IEnumerator SpawnPlatform()
     {
-        Vector3 position = new Vector3(GameObject.Find("Camera").transform.position.x + 70, Random.Range(-5, 20));
-        Instantiate(Spawner[Random.Range(0, 2)], position, Quaternion.identity);
+        Vector3 position = new Vector3(GameObject.Find("Camera").transform.position.x + spawnOffset, Random.Range(-1, 20));
+        Instantiate(Spawns[Random.Range(0, Spawns.Length)], position, Quaternion.identity);
         yield return new WaitForSeconds(spawnDelay);
     }
 }

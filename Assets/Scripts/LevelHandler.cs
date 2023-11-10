@@ -9,6 +9,8 @@ public class LevelHandler : MonoBehaviour
 
     private static LevelHandler _Instance;
     public int playersAlive;
+    public float finalScorePlayer1=0;
+    public float finalScorePlayer2=0;
     public static LevelHandler Instance
     {
         get
@@ -79,7 +81,12 @@ public class LevelHandler : MonoBehaviour
     {
         if (playersAlive==0) 
         {
-            SceneManager.LoadScene("Loss");
+            if(Save_Load.Instance.SavePlayerScore(finalScorePlayer1, finalScorePlayer2))
+            {
+                SceneManager.LoadScene("Loss");
+
+            }
+
         }
     }
 }
